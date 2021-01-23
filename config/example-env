@@ -1,7 +1,7 @@
 // env template
-apiKey=xxx
-authDomain=xxx
-databaseURL=xxx
-projectId=xxx
-storageBucket=xxx
-messagingSenderId=xxx
+apiKey= "AIzaSyBEWML22PzS5J1Syi32oz9sgcsbS1d6Qa4"
+authDomain= "platziposts.firebaseapp.com"
+databaseURL= "platziposts.firebaseio.com"
+projectId= "platziposts"
+storageBucket=   "platziposts.appspot.com",
+messagingSenderId= "961097403115"

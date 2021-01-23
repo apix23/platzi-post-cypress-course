@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+ posts:
+   build:
+     context: .
+   image: cypress
+   ports:
+     - 8080:8080
+     - 8081:8081
+     - 9229:9229
+   volumes:
+     - ./:/code
+   command: npm run dev
+  

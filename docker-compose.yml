@@ -1,14 +1,15 @@
 version: '3.8'
 services:
- posts:
+ platziposts:
    build:
      context: .
    image: cypress
    ports:
      - 8080:8080
      - 8081:8081
+     - 9000:9000
      - 9229:9229
    volumes:
      - ./:/code
-   command: npx webpack-dev-server --inline --progress --config build/webpack.dev.conf.js
+   command: npx static-server ./dist -p 9000
   

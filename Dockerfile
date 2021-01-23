@@ -8,6 +8,6 @@ WORKDIR /code
 # RUN rm -rvf ./node_modules ./package-lock.json
 # RUN npm i firebase@latest
 RUN npm i
-# EXPOSE 8080
+RUN npm run build:test
 # RUN npm audit fix
 # RUN npm rebuild node-sass --force

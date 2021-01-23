@@ -2,6 +2,11 @@
 
 Proyecto de ejemplo para implementar tests en el curso de testing end-to-end con Cypress
 
+# Mediante docker-compose
+
+``` bash
+$ docker-compose up -d
+```
 ### Instalación
 
 El proyecto require 2 bases de datos de firebase una para su uso normal y otra para ejecutar los tests, cree 2 bases de datos en Firebase y obtenga las credenciales para ambas y crear los archivos `production.env` y `test.env` con la configuración de firebase para cada una de las bases de datos, hay un ejemplo del formato requerido para estos archivos en `config/example-env`.

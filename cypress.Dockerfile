@@ -60,4 +60,5 @@ RUN echo  " node version:    $(node -v) \n" \
   "firefox:         $(firefox --version || true) \n"
 COPY ["./test", "/e2e/"]
 WORKDIR /e2e
+RUN echo $(ls -lha)
 ENTRYPOINT ["cypress", "run"]

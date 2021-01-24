@@ -11,7 +11,7 @@ services:
       - 9229:9229
     volumes:
       - ./:/code
-    command: npx static-server ./dist -p 9000
+    command: npx pushstate-server -d ./dist -p 9000
 
   # Cypress container
   cypress:
@@ -26,7 +26,7 @@ services:
       # pass base url to test pointing at the web application
       - CYPRESS_baseUrl=http://platzi-posts:9000
     # share the current folder as volume to avoid copying
-    # working_dir: /e2e/test
+    working_dir: /e2e
     volumes:
-      - ./:/e2e/test
+      - ./:/e2e
   

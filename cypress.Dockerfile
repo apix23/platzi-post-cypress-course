@@ -58,7 +58,7 @@ RUN echo  " node version:    $(node -v) \n" \
   "user:            $(whoami) \n" \
   "chrome:          $(google-chrome --version || true) \n" \
   "firefox:         $(firefox --version || true) \n"
-COPY ["./test", "/e2e/"]
-WORKDIR /e2e
-RUN echo $(ls -lha)
-ENTRYPOINT ["cypress", "run"]
+COPY [".", "/e2e"]
+RUN chmod +x /e2e/entrypoint.sh
+WORKDIR /e2e/test
+ENTRYPOINT ["/e2e/entrypoint.sh"]

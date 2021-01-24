@@ -5,14 +5,17 @@
   "author": "edsadr",
   "private": true,
   "scripts": {
+    "cypress:open": "cypress open --project ./test # cypress",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "lint": "standard",
     "lint-fix": "standard --fix",
     "start": "npm run dev",
     "build": "cross-env NODE_ENV=production node build/build.js",
-    "build:test": "cross-env NODE_ENV=test node build/build.js",
-    "test:server": "static-server ./dist -p 9000",
-    "test:init": "npm run build:test && npm run test:server"
+    "build:test": "cross-env NODE_ENV=test node build/build.js # cypress",
+    "test:server": "pushstate-server -d ./dist -p 9000 # platzipost",
+    "test:init": "npm run test:server",
+    "rebuild": "rebuild node-sass --force",
+    "test:dev": "npm run build:test && run-p --race cypress:open # cypress"
   },
   "dependencies": {
     "firebase": "^4.13.1",
@@ -43,12 +46,14 @@
     "html-webpack-plugin": "^2.30.1",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.8.3",
+    "npm-run-all": "^4.1.5",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",
     "portfinder": "^1.0.13",
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.8",
     "postcss-url": "^7.2.1",
+    "pushstate-server": "^3.1.0",
     "rimraf": "^2.6.0",
     "sass-loader": "^7.0.1",
     "semver": "^5.3.0",
@@ -64,6 +69,13 @@
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0"
+  },
+  "standard":{
+    "globals": [
+      "describe",
+      "it",
+      "cy"
+    ]
   },
   "engines": {
     "node": ">= 8.0.0",

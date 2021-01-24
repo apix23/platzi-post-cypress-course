@@ -5,7 +5,7 @@
 # build this image with command
 #   docker build -t cypress/included:6.3.0 .
 #
-FROM cypress/browsers:node12.18.3-chrome87-ff82
+FROM cypress/browsers:node8.9.3-npm6.10.1-chrome75
 
 # avoid too many progress messages
 # https://github.com/cypress-io/cypress/issues/1243
@@ -29,14 +29,14 @@ RUN id
 # point Cypress at the /root/cache no matter what user account is used
 # see https://on.cypress.io/caching
 ENV CYPRESS_CACHE_FOLDER=/root/.cache/Cypress
-RUN npm install -g "cypress@6.3.0"
+RUN npm install -g "cypress@3.1.0"
 RUN cypress verify
 
 # Cypress cache and installed version
 # should be in the root user's home folder
 RUN cypress cache path
 RUN cypress cache list
-RUN cypress info
+# RUN cypress info
 RUN cypress version
 
 # give every user read access to the "/root" folder where the binary is cached

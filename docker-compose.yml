@@ -1,15 +1,32 @@
 version: '3.8'
 services:
- platziposts:
-   build:
-     context: .
-   image: cypress
-   ports:
-     - 8080:8080
-     - 8081:8081
-     - 9000:9000
-     - 9229:9229
-   volumes:
-     - ./:/code
-   command: npx static-server ./dist -p 9000
+  platzi-posts:
+    build:
+      context: .
+    image: platziposts
+    ports:
+      - 8080:8080
+      - 8081:8081
+      - 9000:9000
+      - 9229:9229
+    volumes:
+      - ./:/code
+    command: npx static-server ./dist -p 9000
+
+  # Cypress container
+  cypress:
+    build:
+      context: .
+      # the Docker image to use from https://github.com/cypress-io/cypress-docker-images
+      dockerfile: ./cypress.Dockerfile
+    image: cypress
+    depends_on:
+      - platzi-posts
+    environment:
+      # pass base url to test pointing at the web application
+      - CYPRESS_baseUrl=http://127.0.0.1:8123
+    # share the current folder as volume to avoid copying
+    working_dir: /e2e/test
+    volumes:
+      - ./:/e2e/test
   

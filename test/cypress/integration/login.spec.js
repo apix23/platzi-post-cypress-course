@@ -2,17 +2,21 @@
 
 describe('Login tests', () => {
 
+  before(() => {
+    cy.exec('npm run test:clean')
+  })
+
   beforeEach(() => {
     cy.fixture('user.json').as('userData')
     cy.visit('/login')
     cy.contains('h1', 'Bienvenido').should('be.visible')
   })
 
-  it.skip('should sign up a user', () => {
+  it('should sign up a user', () => {
     cy.get('@userData').then((userData)=>{
       cy.contains('Crear una cuenta').click()
       cy.get('#name').type(userData.name)
-      cy.get('#title').type(userData.title)
+      cy.get('#title').type(userData.company)
       cy.get('#email2').type(userData.email)
       cy.get('#password2').type(userData.password)
       cy.contains('.button', 'Registrarse').click()

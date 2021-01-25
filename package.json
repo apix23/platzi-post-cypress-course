@@ -15,7 +15,8 @@
     "test:server": "pushstate-server -d ./dist -p 9000 # platzipost",
     "test:init": "npm run test:server",
     "rebuild": "rebuild node-sass --force",
-    "test:dev": "npm run build:test && run-p --race cypress:open # cypress"
+    "test:dev": "npm run build:test && run-p --race cypress:open # cypress",
+    "test:clean": "node ./build/clean-test-db.js"
   },
   "dependencies": {
     "firebase": "^4.13.1",
@@ -42,6 +43,7 @@
     "dotenv-webpack": "^1.5.7",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
+    "firebase-admin": "^6.1.0",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
     "node-notifier": "^5.1.2",
@@ -70,7 +72,7 @@
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0"
   },
-  "standard":{
+  "standard": {
     "globals": [
       "describe",
       "it",

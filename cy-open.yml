@@ -28,4 +28,6 @@ services:
     volumes:
       # for Cypress to communicate with the X11 server pass this socket file
       # in addition to any other mapped volumes
+      # xhost +local: (Authorize the following protocol by typing the this command in local)
+      #
       - /tmp/.X11-unix:/tmp/.X11-unix
